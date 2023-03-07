@@ -144,18 +144,18 @@ const layoutHeader = defineComponent({
       class="app-mask"
       @click="useAppStoreHook().toggleSideBar()"
     />
-    <Vertical
-      v-show="
-        !pureSetting.hiddenSideBar &&
-        (layout.includes('vertical') || layout.includes('mix'))
-      "
-    />
     <div
       :class="[
         'main-container',
         pureSetting.hiddenSideBar ? 'main-hidden' : ''
       ]"
     >
+      <Vertical
+        v-show="
+          !pureSetting.hiddenSideBar &&
+          (layout.includes('vertical') || layout.includes('mix'))
+        "
+      />
       <div v-if="set.fixedHeader">
         <layout-header />
         <!-- 主体内容 -->
@@ -197,6 +197,10 @@ const layoutHeader = defineComponent({
   &.mobile.openSidebar {
     position: fixed;
     top: 0;
+
+    .ml210 {
+      left: 0;
+    }
   }
 }
 

@@ -22,8 +22,10 @@ const { t, route, locale, translationCh, translationEn } =
 const {
   device,
   routers,
+  title,
   logout,
   onPanel,
+  backHome,
   menuSelect,
   resolvePath,
   username,
@@ -65,10 +67,15 @@ watch(
     class="horizontal-header"
     v-loading="usePermissionStoreHook().wholeMenus.length === 0"
   >
+    <div class="horizontal-header-left" @click="backHome">
+      <img src="/logo.svg" alt="logo" />
+      <span>{{ title }}</span>
+    </div>
     <el-menu
       router
       ref="menuRef"
       mode="horizontal"
+      menu-trigger="click"
       class="horizontal-header-menu"
       :default-active="defaultActive"
       @select="indexPath => menuSelect(indexPath, routers)"
@@ -98,9 +105,9 @@ watch(
     </el-menu>
     <div class="horizontal-header-right">
       <!-- 菜单搜索 -->
-      <Search />
+      <!-- <Search /> -->
       <!-- 通知 -->
-      <Notice id="header-notice" />
+      <!-- <Notice id="header-notice" /> -->
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
         <globalization
@@ -133,7 +140,7 @@ watch(
       </el-dropdown>
       <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link navbar-bg-hover select-none">
+        <span class="select-none el-dropdown-link navbar-bg-hover">
           <img
             src="https://avatars.githubusercontent.com/u/44761321?v=4"
             :style="avatarsStyle"
@@ -152,13 +159,14 @@ watch(
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <span
+      <!-- 系统设置开关 -->
+      <!-- <span
         class="set-icon navbar-bg-hover"
         :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
         <IconifyIconOffline :icon="Setting" />
-      </span>
+      </span> -->
     </div>
   </div>
 </template>

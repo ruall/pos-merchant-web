@@ -3,10 +3,12 @@ import { useGlobal } from "@pureadmin/utils";
 import backTop from "@/assets/svg/back_top.svg?component";
 import { h, computed, Transition, defineComponent } from "vue";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { useRoute } from "vue-router";
 
 const props = defineProps({
   fixedHeader: Boolean
 });
+const route = useRoute();
 
 const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
 
@@ -75,7 +77,10 @@ const transitionMain = defineComponent({
 
 <template>
   <section
-    :class="[props.fixedHeader ? 'app-main' : 'app-main-nofixed-header']"
+    :class="[
+      props.fixedHeader ? 'app-main' : 'app-main-nofixed-header',
+      route.name == 'Welcome' ? 'ml210' : ''
+    ]"
     :style="getSectionStyle"
   >
     <router-view>
@@ -134,6 +139,15 @@ const transitionMain = defineComponent({
   height: 100vh;
   position: relative;
   overflow-x: hidden;
+}
+
+.ml210 {
+  padding-top: 48px;
+  background-color: #fff;
+  position: absolute;
+  left: -210px;
+  top: 0;
+  width: 100vw;
 }
 
 .app-main-nofixed-header {

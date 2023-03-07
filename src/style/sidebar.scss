@@ -52,7 +52,7 @@
     top: 0;
     right: 0;
     z-index: 998;
-    width: calc(100% - 210px);
+    width: 100%;
     /* fixed-header 属性左上角动画 */
     transition: width var(--pure-transition-duration);
   }
@@ -73,8 +73,9 @@
     /* 展开动画 */
     transition: width var(--pure-transition-duration);
     width: $sideBarWidth !important;
-    background: $menuBg;
-    height: 100%;
+    background: $sidebarBg;
+    height: calc(100% - 48px);
+    margin-top: 48px;
     position: fixed;
     font-size: 0;
     top: 0;
@@ -129,7 +130,6 @@
       height: 50px;
       color: $menuText;
       background-color: transparent !important;
-
       &:hover {
         color: $menuTitleHover !important;
       }
@@ -216,7 +216,8 @@
     /* 无子集的激活菜单背景 */
     .is-active.submenu-title-noDropdown.outer-most > * {
       z-index: 1;
-      color: #fff;
+      // color: #fff;
+      color: #0091ff;
     }
     .is-active.submenu-title-noDropdown.outer-most::before {
       content: "";
@@ -228,8 +229,12 @@
       top: 0;
       bottom: 0;
       border-radius: 3px;
-      background: var(--el-color-primary) !important;
+      // background: var(--el-color-primary) !important;
+      background: #d7effe !important;
     }
+  }
+  .un-show-sidebar {
+    height: 0;
   }
 
   /* vertical 菜单折叠 */
@@ -271,10 +276,16 @@
       height: 50px;
       line-height: 50px;
       color: $menuText;
+      // color: rgba(0, 0, 0, 0.85);
       background-color: $subMenuBg;
 
       &:hover {
         color: $menuTitleHover !important;
+      }
+      &.outer-most {
+        &:hover {
+          color: #0091ff !important;
+        }
       }
     }
 
@@ -321,11 +332,14 @@
     }
 
     .el-menu--popup {
-      background-color: $subMenuBg !important;
+      // background-color: $subMenuBg !important;
+      background-color: #fff !important;
 
       .el-menu-item {
-        color: $menuText;
-        background-color: $subMenuBg;
+        // color: $menuText;
+        color: #666;
+        // background-color: $subMenuBg;
+        background-color: #fff;
 
         span {
           font-size: 12px;
@@ -333,7 +347,8 @@
       }
 
       .el-sub-menu__title {
-        color: $menuText;
+        // color: $menuText;
+        color: #666;
       }
     }
 
@@ -350,7 +365,8 @@
       background-color: $subMenuBg !important;
 
       &:hover {
-        color: $menuTitleHover !important;
+        // color: $menuTitleHover !important;
+        color: #333 !important;
       }
     }
 
@@ -366,13 +382,15 @@
     .nest-menu .el-sub-menu > .el-sub-menu__title,
     .el-menu-item {
       &:hover {
-        color: $menuTitleHover !important;
+        // color: $menuTitleHover !important;
+        color: #333 !important;
       }
     }
 
     .el-menu-item.is-active {
       transition: color 0.3s;
-      color: $subMenuActiveText !important;
+      // color: $subMenuActiveText !important;
+      color: #333 !important;
     }
 
     .el-menu-item.is-active.nest-menu > * {
@@ -563,6 +581,9 @@
         transition-duration: 0.3s;
         transform: translate3d(-$sideBarWidth, 0, 0);
       }
+      .ml210 {
+        left: 0;
+      }
     }
   }
 }
@@ -581,7 +602,7 @@ body[layout="vertical"] {
 
   .hideSidebar {
     .fixed-header {
-      width: calc(100% - 54px);
+      width: 100%;
       transition: width var(--pure-transition-duration);
     }
 
@@ -593,9 +614,12 @@ body[layout="vertical"] {
         background: transparent !important;
       }
     }
+    .ml210 {
+      left: 0;
+    }
 
     .main-container {
-      margin-left: 54px;
+      margin-left: 0;
     }
 
     /* 菜单折叠 */
@@ -669,7 +693,7 @@ body[layout="mix"] {
 
   .hideSidebar {
     .fixed-header {
-      width: calc(100% - 54px);
+      width: 100%;
       transition: width var(--pure-transition-duration);
     }
 
@@ -680,6 +704,9 @@ body[layout="mix"] {
       .is-active.submenu-title-noDropdown.outer-most {
         background: transparent !important;
       }
+    }
+    .ml210 {
+      left: -55px;
     }
 
     .main-container {
@@ -700,5 +727,15 @@ body[layout="mix"] {
         }
       }
     }
+  }
+}
+
+// 左侧菜单栏样式
+.outer-most {
+  .el-menu-item {
+    color: rgba(0, 0, 0, 0.85) !important;
+  }
+  .el-sub-menu__title {
+    color: rgba(0, 0, 0, 0.85) !important;
   }
 }

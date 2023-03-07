@@ -62,10 +62,15 @@ watch(
 <template>
   <div
     v-loading="menuData.length === 0"
-    :class="['sidebar-container', showLogo ? 'has-logo' : '']"
+    :class="[
+      'sidebar-container',
+      showLogo ? 'has-logo' : '',
+      route.name == 'Welcome' ? 'un-show-sidebar' : ''
+    ]"
   >
     <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar
+      v-if="route.name !== 'Welcome'"
       wrap-class="scrollbar-wrapper"
       :class="[device === 'mobile' ? 'mobile' : 'pc']"
     >
@@ -73,7 +78,7 @@ watch(
         router
         unique-opened
         mode="vertical"
-        class="outer-most select-none"
+        class="select-none outer-most"
         :collapse="isCollapse"
         :default-active="route.path"
         :collapse-transition="false"
@@ -84,12 +89,12 @@ watch(
           :key="routes.path"
           :item="routes"
           :base-path="routes.path"
-          class="outer-most select-none"
+          class="select-none outer-most"
         />
       </el-menu>
     </el-scrollbar>
     <leftCollapse
-      v-if="device !== 'mobile'"
+      v-if="device !== 'mobile' && route.name !== 'Welcome'"
       :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
@@ -99,5 +104,9 @@ watch(
 <style scoped>
 :deep(.el-loading-mask) {
   opacity: 0.45;
+}
+
+.un-show-sidebar {
+  height: 48px;
 }
 </style>
