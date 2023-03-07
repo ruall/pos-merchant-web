@@ -11,7 +11,7 @@ defineOptions({
     <noAccess />
     <div class="ml-12">
       <p
-        class="font-medium text-4xl mb-4 dark:text-white"
+        class="mb-4 text-4xl font-medium dark:text-white"
         v-motion
         :initial="{
           opacity: 0,

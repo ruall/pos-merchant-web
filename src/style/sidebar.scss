@@ -122,7 +122,8 @@
     .el-menu {
       border: none;
       height: 100%;
-      background-color: transparent !important;
+      // background-color: transparent !important;
+      background-color: #fff !important;
     }
 
     .el-menu-item,
@@ -131,7 +132,8 @@
       color: $menuText;
       background-color: transparent !important;
       &:hover {
-        color: $menuTitleHover !important;
+        // color: $menuTitleHover !important;
+        color: #333 !important;
       }
 
       div,
@@ -150,10 +152,12 @@
 
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
-      color: $subMenuActiveText !important;
+      // color: $subMenuActiveText !important;
+      color: #333 !important;
 
       i {
-        color: $subMenuActiveText !important;
+        // color: $subMenuActiveText !important;
+        color: #333 !important;
       }
     }
 
@@ -184,7 +188,8 @@
     & .el-sub-menu .el-menu-item {
       font-size: 12px;
       min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
+      // background-color: $subMenuBg !important;
+      background-color: #f7fcff !important;
     }
 
     /* 有子集的激活菜单左侧小竖条 */
@@ -257,10 +262,12 @@
 
     .is-active > .el-sub-menu__title,
     .is-active.submenu-title-noDropdown {
-      color: $subMenuActiveText !important;
+      // color: $subMenuActiveText !important;
+      color: #333 !important;
 
       i {
-        color: $subMenuActiveText !important;
+        // color: $subMenuActiveText !important;
+        color: #333 !important;
       }
     }
 
@@ -280,7 +287,8 @@
       background-color: $subMenuBg;
 
       &:hover {
-        color: $menuTitleHover !important;
+        // color: $menuTitleHover !important;
+        color: #333 !important;
       }
       &.outer-most {
         &:hover {
@@ -296,7 +304,7 @@
 
     .el-menu-item.is-active.nest-menu > * {
       z-index: 1;
-      color: #fff;
+      color: #0091ff;
     }
 
     .el-menu-item.is-active.nest-menu::before {
@@ -308,7 +316,8 @@
       top: 0;
       bottom: 0;
       border-radius: 3px;
-      background: var(--el-color-primary) !important;
+      // background: var(--el-color-primary) !important;
+      background: #d7effe !important;
     }
 
     .el-menu-item,
