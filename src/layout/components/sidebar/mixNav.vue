@@ -75,7 +75,6 @@ watch(
       router
       ref="menuRef"
       mode="horizontal"
-      menu-trigger="click"
       class="horizontal-header-menu"
       :default-active="defaultActive"
       @select="indexPath => menuSelect(indexPath, routers)"
